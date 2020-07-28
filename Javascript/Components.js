@@ -85,17 +85,10 @@ components.chatScreen = `
                 </div>
                 <div class="list-messages">
                     <div class="message-container mine">
-                        <div class="content">
-                            Hell no
-                        </div>
+                       
                     </div>
                     <div class="message-container their">
-                        <div class="owner">
-                            abc@gmail.com
-                        </div>
-                        <div class="content">
-                            No, thanks
-                        </div>
+                        
                     </div>
                 </div>
                 <form id='send-message-form'>

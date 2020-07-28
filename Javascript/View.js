@@ -44,7 +44,36 @@ view.setActiveScreen = (screenName) => {
 
         case 'chatScreen':
             document.getElementById('app').innerHTML = components.chatScreen
-            document.getElementById('welcome').innerHTML = `Welcome ` + model.currentUser.displayName;
+            const sendMessageForm = document.getElementById('send-message-form');
+            sendMessageForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const message = {
+                    content: sendMessageForm.message.value,
+                    owner: model.currentUser.email
+                }
+                view.addMessage(message)
+                console.log(sendMessageForm.message.value)
+            })
             break;
     }
+}
+
+view.addMessage = (message) => {
+    const messageWrapper = document.createElement('div');
+    messageWrapper.classList.add('message-container')
+    if(message.owner === model.currentUser.email) {
+        messageWrapper.classList.add('mine')
+        messageWrapper.innerHTML = `
+        <div class = 'content'>
+        ${message.content}
+        </div>
+        `
+    } else {
+        messageWrapper.classList.add('their')
+        messageWrapper.innerHTML = `
+        <div class = 'content'>
+        ${message.content}
+        </div>`
+    }
+    document.querySelector('.list-messages').appendChild(messageWrapper)
 }
