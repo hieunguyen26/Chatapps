@@ -74,4 +74,36 @@ components.loginScreen = `<div class="login-container">
 </div>`
 
 components.chatScreen = `
-<div id = 'welcome'></div>` 
+<div class="chat-container">
+        <div class="header">
+            MindX Chat
+        </div>
+        <div class="main">
+            <div class="conversation-detail">
+                <div class="conversation-header">
+                    First Conversation
+                </div>
+                <div class="list-messages">
+                    <div class="message-container mine">
+                        <div class="content">
+                            Hell no
+                        </div>
+                    </div>
+                    <div class="message-container their">
+                        <div class="owner">
+                            abc@gmail.com
+                        </div>
+                        <div class="content">
+                            No, thanks
+                        </div>
+                    </div>
+                </div>
+                <form id='send-message-form'>
+                    <div class="input-wrapper">
+                        <input type="text" name="message" placeholder="Type a messsage">
+                    </div>
+                    <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>` 

@@ -7,35 +7,44 @@
     <title>Document</title>
     <link rel="stylesheet" href="../CSS/Style.css">
     <link rel="stylesheet" href="../CSS/Login.css">
+    <link rel="stylesheet" href="../CSS/Chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <div class="login-container">
-        <div class="aside-right">
-            <div class="header">
-                <h3>My App Chat</h3>
+    <div class="chat-container">
+        <div class="header">
+            MindX Chat
+        </div>
+        <div class="main">
+            <div class="conversation-detail">
+                <div class="conversation-header">
+                    First Conversation
+                </div>
+                <div class="list-messages">
+                    <div class="message-container mine">
+                        <div class="content">
+                            Hell no
+                        </div>
+                    </div>
+                    <div class="message-container their">
+                        <div class="owner">
+                            abc@gmail.com
+                        </div>
+                        <div class="content">
+                            No, thanks
+                        </div>
+                    </div>
+                </div>
+                <form id='send-message-form'>
+                    <div class="input-wrapper">
+                        <input type="text" name="message" placeholder="Type a messsage">
+                    </div>
+                    <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                </form>
             </div>
-            <form id="login-form">
-             <div class="input-wrapper">
-                    <input type="email" placeholder="Email" name="email">
-                    <div class="error" id="email-error"></div>
-                </div>
-        
-                <div class="input-wrapper">
-                    <input type="password" placeholder="Password..." name="password">
-                    <div class="error" id="password-error"></div>
-                </div>
-        
-                <div class="form-action">
-                    <span id="redirect-to-register">
-                        Don't have an account? <a onclick="goToRegister()">Register</a>
-                    </span>
-        
-                    <button class="btn" type="submit">Login</button>
-                </div>
-            </form>
         </div>
-        </div>
+    </div>
 </body>
 
 </html>
