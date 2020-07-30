@@ -67,8 +67,12 @@
 
 .chat-container .list-messages{
     padding: 10px;
+    overflow-y: auto;
 }
 
+.chat-container .list-messages .message-container{
+    margin-bottom: 10px;
+}
 
 .chat-container .message-container .content{
     border-radius: 3px;

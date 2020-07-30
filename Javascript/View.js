@@ -51,9 +51,19 @@ view.setActiveScreen = (screenName) => {
                     content: sendMessageForm.message.value,
                     owner: model.currentUser.email
                 }
+                const messageFromBot = {
+                    owner: 'Bot',
+                    content: sendMessageForm.message.value
+                }
+                if(message.content.trim() === ''){
+                    alert('Please input message')
+                } else {
+
                 view.addMessage(message)
+                sendMessageForm.message.value = ``;
+                view.addMessage(messageFromBot)
                 console.log(sendMessageForm.message.value)
-            })
+            } })
             break;
     }
 }
@@ -71,6 +81,9 @@ view.addMessage = (message) => {
     } else {
         messageWrapper.classList.add('their')
         messageWrapper.innerHTML = `
+        <div class = 'owner'>
+        ${message.owner}
+        </div>
         <div class = 'content'>
         ${message.content}
         </div>`
