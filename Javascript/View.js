@@ -63,6 +63,7 @@ view.setActiveScreen = (screenName) => {
                 sendMessageForm.message.value = ``;
                 view.addMessage(messageFromBot)
                 console.log(sendMessageForm.message.value)
+                
             } })
             break;
     }
@@ -88,5 +89,7 @@ view.addMessage = (message) => {
         ${message.content}
         </div>`
     }
-    document.querySelector('.list-messages').appendChild(messageWrapper)
+   const listMessage = document.querySelector('.list-messages')
+    listMessage.appendChild(messageWrapper)
+    listMessage.scrollTop = listMessage.scrollHeight
 }
