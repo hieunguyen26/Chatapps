@@ -49,7 +49,8 @@ view.setActiveScreen = (screenName) => {
                 e.preventDefault();
                 const message = {
                     content: sendMessageForm.message.value,
-                    owner: model.currentUser.email
+                    owner: model.currentUser.email,
+                    createdAt: new Date().toISOString()
                 }
                 const messageFromBot = {
                     owner: 'Bot',
@@ -58,13 +59,14 @@ view.setActiveScreen = (screenName) => {
                 if(message.content.trim() === ''){
                     alert('Please input message')
                 } else {
-
+                model.addMessage(message)
                 view.addMessage(message)
                 sendMessageForm.message.value = ``;
                 view.addMessage(messageFromBot)
                 console.log(sendMessageForm.message.value)
                 
             } })
+            model.loadConversations()
             break;
     }
 }
@@ -92,4 +94,10 @@ view.addMessage = (message) => {
    const listMessage = document.querySelector('.list-messages')
     listMessage.appendChild(messageWrapper)
     listMessage.scrollTop = listMessage.scrollHeight
+}
+
+view.getCurrentMessage = async() => {
+    const messages = await firebase.firestore().collection('Conversations').get();
+    const listMessages = messages.docs[0].data().messages;
+    return listMessages;
 }
