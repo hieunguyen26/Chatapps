@@ -52,22 +52,23 @@ view.setActiveScreen = (screenName) => {
                     owner: model.currentUser.email,
                     createdAt: new Date().toISOString()
                 }
-                const messageFromBot = {
-                    owner: 'Bot',
-                    content: sendMessageForm.message.value
-                }
+                // const messageFromBot = {
+                //     owner: 'Bot',
+                //     content: sendMessageForm.message.value
+                // }
                 if(message.content.trim() === ''){
                     alert('Please input message')
                 } else {
                 model.addMessage(message)
-                view.addMessage(message)
+                // view.addMessage(message)
                 sendMessageForm.message.value = ``;
-                view.addMessage(messageFromBot)
+                //view.addMessage(messageFromBot)
                 console.log(sendMessageForm.message.value)
                 
             } })
             model.loadConversations()
-            break;
+            model.listenConversationsChange()
+            
     }
 }
 
@@ -100,4 +101,21 @@ view.getCurrentMessage = async() => {
     const messages = await firebase.firestore().collection('Conversations').get();
     const listMessages = messages.docs[0].data().messages;
     return listMessages;
+}
+
+view.showCurrentConversation = () => {
+    // doi ten cuoc tro chuyen
+    document.getElementsByClassName('conversation-header')[0].innerText = model.currentConversation.title;
+    
+
+    //in cac tin nhan len man hinh
+for(message of model.currentConversation.message){
+    view.addMessage(message)
+}
+view.scrollToEndElement()
+}
+
+view.scrollToEndElement = () => {
+    const element = document.querySelector('.list-messages')
+    element.scrollTop = element.scrollHeight
 }

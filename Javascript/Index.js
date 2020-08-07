@@ -12,7 +12,6 @@ const init = () => {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firestoreFunction()
   firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     if(user.emailVerified){
@@ -106,6 +105,8 @@ getDataFromDoc = (doc) => {
 }
 
 getDataFromDocs = (docs) => {
+    return listData = docs.map(item => getDataFromDoc(item))
+  }
   // const listData = []
   // // for (let index = 0; index < docs.length; index++) {
   // //   const element = getDataFromDoc(docs[index]);
@@ -114,5 +115,3 @@ getDataFromDocs = (docs) => {
   // // }
   // return listData
 
-  return listData = docs.map(item => getDataFromDoc(item))
-}

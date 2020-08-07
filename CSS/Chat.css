@@ -87,11 +87,13 @@
 
 .message-container.their .content{
     background: grey;
+    word-break: break-all;
 }
 
 .chat-container .message-container.mine .content{
     background: #037bfe;
     color: #fff;
+    word-break: break-all;
 }
 
 .chat-container .message-container.mine{
