@@ -24,6 +24,11 @@
     border: 1px solid #dbdbdb;
 }
 
+.btn-light{
+    background: none;
+    color: #333;
+}
+
 .error{
     color: #ff0000;
     font-family: sans-serif;
@@ -32,4 +37,12 @@
 
 .cursor-pointer{
     cursor: pointer;
+}
+
+.header{
+    height: 64px;
+    background: coral;
+    text-align: center;
+    font-size: 40px;
+    line-height: 64px;
 }

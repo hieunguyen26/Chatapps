@@ -44,7 +44,8 @@ components.registerScreen = `<div class="register-container">
         </div>
     </form>
 </div>
-</div>`
+</div>
+`
 
 components.loginScreen = `<div class="login-container">
 <div class="aside-right">
@@ -71,24 +72,41 @@ components.loginScreen = `<div class="login-container">
         </div>
     </form>
 </div>
-</div>`
+</div>
+`
 
 components.chatScreen = `
-<div class="chat-container">
+    <div class="chat-container">
         <div class="header">
             MindX Chat
         </div>
         <div class="main">
+            <div class="aside-left">
+                <div class="create-conversation">
+                    <button class = 'btn'>+ New Conversation
+                    </button>
+                </div>
+                <div class="list-conversation">
+                   
+                </div>
+            </div>
             <div class="conversation-detail">
                 <div class="conversation-header">
                     First Conversation
                 </div>
                 <div class="list-messages">
                     <div class="message-container mine">
-                       
+                        <div class="content">
+                            Hell no
+                        </div>
                     </div>
                     <div class="message-container their">
-                        
+                        <div class="owner">
+                            abc@gmail.com
+                        </div>
+                        <div class="content">
+                            No, thanks
+                        </div>
                     </div>
                 </div>
                 <form id='send-message-form'>
@@ -99,4 +117,30 @@ components.chatScreen = `
                 </form>
             </div>
         </div>
-    </div>` 
+    </div>
+    ` 
+
+    components.createConversation = `
+    <div class="create-conversation-container">
+    <div class="header">
+        MindX Chat
+    </div>
+    <div class="main" style="padding: 50px 20%;">
+        <form id='create-conversation-form'>
+            <div>
+                Create a new conversation
+            </div>
+            <div class="input-wrapper">
+                <input type="text" placeholder="Conversation Name" name="conversationTitle">
+                <div class="error" id="conversation-name-error"></div>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" placeholder="Friend Email" name="conversationEmail">
+                <div class="error" id="conversation-email-error"></div>
+            </div>
+            <button class="btn" type="submit">Save</button>
+            <button class="btn btn-light" type="button" id="back-to-chat">Cancel</button>
+        </form>
+    </div>
+    </div>
+    `

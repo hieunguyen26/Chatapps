@@ -77,6 +77,7 @@ model.loadConversations = async () => {
    model.currentConversation = model.conversations[0];
    view.showCurrentConversation()
 } 
+    view.showConversations()
 }
 
 model.listenConversationsChange = () => {
