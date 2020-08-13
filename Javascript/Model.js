@@ -111,3 +111,13 @@ let isFirstRun = true
         }
     }) 
 }
+
+model.createConversation = (dataCreate) => {
+    const conversationToAdd={
+      createdAt: new Date().toISOString(),
+      messages: [],
+      title: dataCreate.conversationTitle,
+      users: [model.currentUser.email, dataCreate.conversationEmail]
+    }
+    firebase.firestore().collection(model.collectionName).add(conversationToAdd)
+  }

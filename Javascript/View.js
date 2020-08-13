@@ -83,6 +83,15 @@ view.setActiveScreen = (screenName, fromCreateConversation = false) => {
             document.querySelector('#back-to-chat').addEventListener('click', () => {
                 view.setActiveScreen('chatScreen', true)
             })
+            const createConversationForm = document.getElementById('create-conversation-form')
+            createConversationForm.addEventListener('submit', (e) => {
+                e.preventDefault()
+                const dataCreate = {
+                    conversationTitle: createConversationForm.conversationTitle.value,
+                    conversationEmail: [createConversationForm.conversationEmail.value, model.currentUser.email]
+                }
+                controller.createConversation(dataCreate)
+            })
             break;
     }
 }

@@ -61,6 +61,24 @@ controller.login = (dataLogin) => {
         model.login(dataLogin)
     }
 
-};
+}
+
+controller.createConversation = (dataCreate) => {
+    if (dataCreate.conversationTitle === ''){
+      document.getElementById('conversation-name-error').innerText = 'Please input friend email'
+    }else {
+      document.getElementById('conversation-name-error').innerText = ''
+    }
+    
+    if (dataCreate.conversationEmail === ''){
+      document.getElementById('conversation-email-error').innerText = 'Please input friend email'
+    }else {
+      document.getElementById('conversation-email-error').innerText = ''
+    }
+
+  if(dataCreate.conversationTitle !== '' && dataCreate.conversationEmail !== ''){
+    model.createConversation(dataCreate)
+  }
+}
 
 
