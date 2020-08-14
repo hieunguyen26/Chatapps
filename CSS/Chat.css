@@ -121,3 +121,20 @@
     background-color: #dbdbdb;
 
 }
+
+.chat-container .aside-right{
+    padding: 10px;
+    width: 13%;
+    height: 100%;
+   
+    border-left: 1px solid #dbdbdb;
+}
+
+.chat-container .aside-right .user{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chat-container #add-user-form{
+    margin-top: 12px;
+}

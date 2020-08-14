@@ -65,7 +65,7 @@ model.addMessage = (message) => {
     const dataToUpdate = {
         message: firebase.firestore.FieldValue.arrayUnion(message)
     }
-    firebase.firestore().collection(model.collectionName).doc('NhqHM5MVenV6jse8i8yi').update(dataToUpdate)
+    firebase.firestore().collection(model.collectionName).doc(model.currentConversation.id).update(dataToUpdate)
 }
 
 model.loadConversations = async () => {
@@ -108,16 +108,16 @@ let isFirstRun = true
                     view.scrollToEndElement()
                 }
             }
+            if(type === 'added') {
+                const docData = getDataFromDoc(oneChange.doc)
+                model.conversations.push(docData)
+                view.addConversation(docData)
+            }
         }
     }) 
 }
 
 model.createConversation = (dataCreate) => {
-    const conversationToAdd={
-      createdAt: new Date().toISOString(),
-      messages: [],
-      title: dataCreate.conversationTitle,
-      users: [model.currentUser.email, dataCreate.conversationEmail]
-    }
-    firebase.firestore().collection(model.collectionName).add(conversationToAdd)
+    firebase.firestore().collection(model.collectionName).add(dataCreate)
+    view.setActiveScreen('chatScreen', true)
   }

@@ -87,8 +87,10 @@ view.setActiveScreen = (screenName, fromCreateConversation = false) => {
             createConversationForm.addEventListener('submit', (e) => {
                 e.preventDefault()
                 const dataCreate = {
-                    conversationTitle: createConversationForm.conversationTitle.value,
-                    conversationEmail: [createConversationForm.conversationEmail.value, model.currentUser.email]
+                    title: createConversationForm.conversationTitle.value,
+                    users: [createConversationForm.conversationEmail.value, model.currentUser.email],
+                    createdAt: (new Date()).toISOString(),
+                    message: []
                 }
                 controller.createConversation(dataCreate)
             })
@@ -139,6 +141,20 @@ view.showCurrentConversation = () => {
     view.addMessage(message)
     }
 view.scrollToEndElement()
+view.showListUsers(model.currentConversation.users)
+}
+view.showListUsers = (users) => {
+    document.querySelector('.list-users').innerHTML = ``
+    for (user of users) {
+        view.addUser(user)
+    }
+}
+
+view.addUser = (user) => {
+    const userWrapper = document.createElement('div')
+    userWrapper.classList.add('user')
+    userWrapper.innerText = user
+    document.querySelector('.list-users').appendChild(userWrapper)
 }
 
 view.scrollToEndElement = () => {
@@ -167,6 +183,11 @@ view.addConversation = (conversation) => {
         document.querySelector('.current').classList.remove('current')
         conversationWrapper.classList.add('current')
         //thay doi model.currentConversation
+        for (oneConversation of model.conversations){
+            if (oneConversation.id === conversation.id){
+                model.currentConversation = oneConversation
+            }
+        }
         model.currentConversation = conversation
         //in cac tin nhac cua model.currentConversation len man hinh
         view.showCurrentConversation()

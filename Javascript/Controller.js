@@ -75,9 +75,10 @@ controller.createConversation = (dataCreate) => {
     }else {
       document.getElementById('conversation-email-error').innerText = ''
     }
-
+    
   if(dataCreate.conversationTitle !== '' && dataCreate.conversationEmail !== ''){
     model.createConversation(dataCreate)
+    
   }
 }
 
